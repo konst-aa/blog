@@ -1,33 +1,26 @@
 # pal-blog-generator
 
-FIXME: description
+Generates static html with templates.
+Will be able to fill in previous articles soon.
 
-## Installation
+## Setup:
 
-Download from http://example.com/FIXME.
+Make sure you have clojure and lein installed.
 
-## Usage
+```
+brew install clojure
+brew install lein
+```
 
-FIXME: explanation
+or something
 
-    $ java -jar pal-blog-generator-0.1.0-standalone.jar [args]
+## Usage:
 
-## Options
+```Usage: ./render.sh -template template.html -target target-dir
+    -i markdown1.cd markdown2.cd ... | -d path/to/markdowns-target
+    [-history (not working rn)]
+```
 
-FIXME: listing of options this app accepts.
+### Example use:
 
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-
-### That You Think
-
-### Might be Useful
-
-## License
+`./render.sh -template example/h.html -d example/items/ -target example-rendered`
