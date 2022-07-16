@@ -9,7 +9,7 @@ Make sure you have clojure and lein installed.
 
 ```
 brew install clojure
-brew install lein
+brew install leiningen
 ```
 
 or something
