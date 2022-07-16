@@ -16,7 +16,8 @@ or something
 
 ## Usage:
 
-```Usage: ./render.sh -template template.html -target target-dir
+```
+Usage: ./render.sh -template template.html -target target-dir
     -i markdown1.cd markdown2.cd ... | -d path/to/markdowns-target
     [-history (not working rn)]
 ```
