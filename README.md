@@ -18,8 +18,9 @@ or something
 
 ```Usage: ./render.sh -template template.html -target target-dir
     -i markdown1.cd markdown2.cd ... | -d path/to/markdowns-target
-    [-history (not working rn)]
 ```
+
+`{{markdown|safe}}` to embed markdown and `{{prev|safe}}` to embed previous articles
 
 ### Example use:
 
