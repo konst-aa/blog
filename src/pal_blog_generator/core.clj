@@ -1,7 +1,8 @@
 (ns pal-blog-generator.core
   (:gen-class)
-  (:use selmer.parser)
-  (:use markdown.core)
+  (:use [selmer.parser]
+        [markdown.core]
+        [clojure.string :only (join split)])
   (:require
    [clojure.core.reducers :as r]
    [clojure.string :as s]
@@ -19,16 +20,30 @@
         (first l)
         (conj (last l) item))))))
 
+(defn load-prev
+  ([history]
+   (if (not (empty? history))
+     (str
+      "## Previous articles: \n"
+      (join
+       "\n" (map
+             (fn [item]
+               (render "[{{name}}]({{link}})" {:name (first item) :link (last item)}))
+             (take-last 5 history))))
+     "")))
+
 (defn load-reducer
   ([template target]
    (let [template (slurp template)]
      (fn [history item]
        (let [templating-dict
-             {:markdown (md-to-html-string (slurp item))}]
+             {:markdown (md-to-html-string (slurp item))
+              :prev (md-to-html-string (load-prev history))}]
          (spit
           (str target "/" (count history) ".html")
           (render template templating-dict)))
-       (conj history (count history))))))
+         ; my regex didn't work so now I suffer the consequences
+       (conj history (list (second (reverse (split "b.md" #"(\/|\.)"))) (count history)))))))
 
 (defn -main
   "does all the cli stuff"
@@ -45,9 +60,7 @@
     (reduce
      (load-reducer (first (get arg-map "-template"))
                    (first (get arg-map "-target")))
-     (case (get arg-map "-history" [])
-       [] []
-       :else (json/read-str (slurp (first (get arg-map "-history")))))
+     []
      (if (contains? arg-map "-d")
        (let [d (first (get arg-map "-d"))]
          (map (fn [path] (str d path)) (.list (io/file d))))
