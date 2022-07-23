@@ -9,14 +9,15 @@ Make sure you have clojure and lein installed.
 
 ```
 brew install clojure
-brew install lein
+brew install leiningen
 ```
 
 or something
 
 ## Usage:
 
-```Usage: ./render.sh -template template.html -target target-dir
+```
+./render.sh -template template.html -target target-dir
     -i markdown1.cd markdown2.cd ... | -d path/to/markdowns-target
 ```
 
