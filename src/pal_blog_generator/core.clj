@@ -21,15 +21,13 @@
         (conj (last l) item))))))
 
 (defn load-prev
-  ([history]
+  ([n history]
    (if (not (empty? history))
-     (str
-      "## Previous articles: \n"
-      (join
-       "\n" (map
-             (fn [item]
-               (render "[{{name}}]({{link}})" {:name (first item) :link (last item)}))
-             (take-last 5 history))))
+     (join
+      "\n" (map
+            (fn [item]
+              (render "[{{name}}]({{link}})  " {:name (first item) :link (last item)}))
+            (take-last n history)))
      "")))
 
 (defn load-reducer
@@ -38,12 +36,17 @@
      (fn [history item]
        (let [templating-dict
              {:markdown (md-to-html-string (slurp item))
-              :prev (md-to-html-string (load-prev history))}]
+              :prev (md-to-html-string (str "##Previous articles: \n" (load-prev 5 history)))}]
          (spit
           (str target "/" (count history) ".html")
           (render template templating-dict)))
          ; my regex didn't work so now I suffer the consequences
-       (conj history (list (second (reverse (split "b.md" #"(\/|\.)"))) (count history)))))))
+       (let
+        [new-history (conj history (list (second (reverse (split item #"(\/|\.)"))) (count history)))]
+         (spit
+          (str target "/archive.html")
+          (render template {:markdown (md-to-html-string (str "##Archive: \n" (load-prev 100 new-history)))}))
+         new-history)))))
 
 (defn -main
   "does all the cli stuff"
