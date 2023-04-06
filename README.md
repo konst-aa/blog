@@ -1,28 +1,5 @@
 # pal-blog-generator
 
 Generates static html with templates.
-Will be able to fill in previous articles soon.
 
-## Setup:
-
-Make sure you have clojure and lein installed.
-
-```
-brew install clojure
-brew install leiningen
-```
-
-or something
-
-## Usage:
-
-```
-./render.sh -template template.html -target target-dir
-    -i markdown1.cd markdown2.cd ... | -d path/to/markdowns-target
-```
-
-`{{markdown|safe}}` to embed markdown and `{{prev|safe}}` to embed previous articles
-
-### Example use:
-
-`./render.sh -template example/h.html -d example/items/ -target example-rendered`
+`make compile`

@@ -1,0 +1,15 @@
+((synopsis "Schemely parser combinators")
+ (author "Moritz Heidkamp")
+ (category parsing)
+ (license "BSD")
+ (dependencies lazy-seq
+               trie
+               matchable
+               srfi-1
+               srfi-13
+               srfi-14
+               srfi-69)
+ (test-dependencies srfi-14 test lazy-seq)
+ (components
+   (extension comparse
+              (csc-options "-d0" "-O3"))))

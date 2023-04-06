@@ -1,0 +1,4 @@
+(repo git "git@bitbucket.org:DerGuteMoritz/{egg-name}.git")
+(uri targz "https://bitbucket.org/DerGuteMoritz/{egg-name}/get/release/{egg-release}.tar.gz")
+(release "2")
+(release "3")

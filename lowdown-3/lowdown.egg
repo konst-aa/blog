@@ -1,0 +1,24 @@
+((synopsis "A pure Chicken Markdown parser")
+ (author "Moritz Heidkamp")
+ (category parsing)
+ (license "BSD")
+ (dependencies char-set-literals
+               clojurian
+               comparse
+               fancypants
+               srfi-1
+               srfi-13
+               srfi-14
+               srfi-69
+               sxml-transforms)
+ (component-options (csc-options "-d0" "-O3"))
+ (components
+  (extension lowdown
+             (component-dependencies lowdown.lolevel))
+  (extension lowdown.extra
+             (source "lowdown-extra.scm")
+             (component-dependencies lowdown))
+  (extension lowdown.lolevel
+             (source "lowdown-lolevel.scm")
+             (source-dependencies "lowdown-impl.scm")
+             (csc-options "-X" "char-set-literals"))))

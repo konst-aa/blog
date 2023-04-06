@@ -1,0 +1,9 @@
+((synopsis "A pure Chicken Markdown parser")
+ (author "Moritz Heidkamp")
+ (category parsing)
+ (license "BSD")
+ (depends (comparse "0.2.2")
+          clojurian
+          sxml-transforms
+          char-set-literals
+          fancypants))
