@@ -19,6 +19,9 @@
           pkgs.chicken
           eggs.args
           eggs.ersatz
+          eggs.srfi-19
+          eggs.srfi-69
+          eggs.json
           (import ./lowdown.nix { inherit pkgs; })
         ];
       };
