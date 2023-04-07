@@ -1,6 +1,6 @@
 ## Take that!
-##### Original by Vladimir Mayakovsky.  
-##### Translated by Konstantin Astafurov.
+### Original by Vladimir Mayakovsky.  
+### Translated by Konstantin Astafurov.
 
 An hour from now, this pristine alley,  
 Will be piping your fat's sickening freight.  
