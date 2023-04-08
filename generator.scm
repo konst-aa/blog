@@ -48,6 +48,7 @@
 
 (set! articles (json-read-fixup (with-input-from-file articles json-read)))
 
+; create the pages that are per-category
 (define by-category
   (foldl (lambda (acc item)
            (foldl (lambda (acc c)
@@ -66,13 +67,13 @@
            (create-directory out-folder)
            out-folder))))
 
-; create the pages that are per-category
 (define posts
   (let ((markdown-folder (alist-ref 'f options equal? #f)))
        (append operands (if markdown-folder
                           (map (lambda (d) (string-append markdown-folder "/" d))
                                (directory markdown-folder)) '()))))
 
+; write category pages
 (map (lambda (category-group)
        (with-output-to-file
          (string-append output-path "/" (car category-group) ".html")
@@ -90,7 +91,7 @@
                  (display (from-file template models: `((markdown . ,(Tstr html)))))))))
      by-category)
 
-
+; write articles
 (map (lambda (f)
        (let* ((md (with-input-from-file f (lambda () (read-string #f))))
               (html (with-output-to-string (lambda () (markdown->html md)))))
@@ -99,6 +100,7 @@
                (lambda () (display (from-file template models: `((markdown . ,(Tstr html)))))))))
      posts)
 
+; write index.html
 (with-output-to-file
   (string-append output-path "/index.html")
   (lambda ()
