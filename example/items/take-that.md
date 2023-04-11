@@ -1,6 +1,6 @@
 ## Take that!
-### Original by Vladimir Mayakovsky.  
-### Translated by Konstantin Astafurov.
+### Original by Vladimir Mayakovsky
+### Translated by Konstantin Astafurov
 
 An hour from now, this pristine alley,  
 Will be piping your fat's sickening freight.  
@@ -19,8 +19,8 @@ Their hundred heads vote to strengthen their trot.
 
 And if today I, the Hun who grinds grit,  
 Won't want to put on a show just for you, I'll go  
-ahead, and happily spit  
-right at your grimace.  
+Ahead, and happily spit  
+Right at your grimace.  
 With priceless words, I create and flow.  
 
 1/5/2022  

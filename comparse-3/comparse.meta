@@ -1,6 +1,0 @@
-((synopsis "Schemely parser combinators")
- (author "Moritz Heidkamp")
- (category parsing)
- (license "BSD")
- (depends (lazy-seq "0.0.7") trie matchable)
- (test-depends test))

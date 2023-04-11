@@ -1,6 +1,0 @@
-(compile -d0 -O3 -J -s "comparse.scm")
-(compile -d0 -O3 -s "comparse.import.scm")
-
-(install-extension
- 'comparse
- '("comparse.so" "comparse.import.so"))
