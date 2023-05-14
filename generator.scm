@@ -115,7 +115,7 @@
   (lambda (port)
     (let* ((category-string
              (map (lambda (c)
-                    (sprintf "[~A](~A) " (car c) (string-append (car c) ".html")))
+                    (sprintf "[~A](~A)  \n" (car c) (string-append (car c) ".html")))
                   by-category))
            (md-text (apply string-append (map link-post posts)))
            (category-text (apply string-append category-string))
