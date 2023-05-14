@@ -2,7 +2,7 @@
 [Wyatt's blog](https://ideascentral.substack.com/)  
 
 Pink delicate blossoms,  
-stone walls one with creeping vines  
+Stone walls one with creeping vines  
 Inconsistent tiling.  
 
 The pale sky repairs  
@@ -26,7 +26,7 @@ From good bricks that now belong
 In fireplaces.  
 
 Floral wallpaper  
-hangs limply from some dumb bush.  
+Hangs limply from some dumb bush.  
 Such pornography!  
 
 No longer marble.  

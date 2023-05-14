@@ -90,7 +90,7 @@
 
 (define (generate-category group port)
   (let* ((joined (apply string-append (map link-post (cdr group))))
-         (html (markdown->html (string-append (sprintf "## ~A:  \n" (car group))))))
+         (html (markdown->html (string-append (sprintf "## ~A:  \n" (car group)) joined))))
     (display (from-file template models: `((markdown . ,(Tstr html)))) port)))
 
 ; write category pages
