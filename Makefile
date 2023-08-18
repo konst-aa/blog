@@ -1,3 +1,5 @@
+server: server.scm
+	csc server.scm -o server
 generator: generator.scm
 	csc generator.scm -o generator
 blog: generator

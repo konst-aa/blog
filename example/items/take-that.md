@@ -3,7 +3,7 @@
 ### Translated by Konstantin Astafurov
 
 An hour from now, this pristine alley,  
-Will be piping your fat's sickening freight.  
+Will flood with your fat's sickening freight.  
 But for you, I have opened poetry's valley.  
 With priceless words, I flow, and create.  
 

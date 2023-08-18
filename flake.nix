@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "A blog generator written in Chicken Scheme";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
   };
@@ -9,7 +9,6 @@
       let
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         stdenv = pkgs.stdenv;
-        #eggs = (import ./eggs.nix {inherit pkgs stdenv; }); 
         eggs = pkgs.chickenPackages.chickenEggs;
       in
       pkgs.stdenv.mkDerivation {
@@ -20,8 +19,13 @@
           pkgs.pandoc
           eggs.args
           eggs.ersatz
+          eggs.intarweb
+          eggs.regex
+          eggs.spiffy
+          eggs.srfi-18
           eggs.srfi-19
           eggs.srfi-69
+          eggs.uri-common
           eggs.json
         ];
       };
