@@ -20,6 +20,7 @@
           eggs.args
           eggs.ersatz
           eggs.intarweb
+          eggs.openssl
           eggs.regex
           eggs.spiffy
           eggs.srfi-1
