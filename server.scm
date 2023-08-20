@@ -1,5 +1,4 @@
 (import spiffy
-        openssl
         intarweb
         uri-common
         srfi-1
@@ -11,23 +10,9 @@
         (chicken string))
 
 
-;; Bind the port as root, before we drop privileges
-(define listener (ssl-listen (server-port)))
-(define domain (get-environment-variable "DOMAIN"))
-
-;; Load the certificate files as root so we can secure their permissions
-(ssl-load-certificate-chain!
-  listener
-  (string-append "/etc/letsencrypt/live/" domain "/fullchain.pem"))
-(ssl-load-private-key!
-  listener
-  (string-append "/etc/letsencrypt/live/" domain "/privkey.pem")))
-
 (define mailing-list-name (get-environment-variable "MAILING_LIST_NAME"))
 (define email-mutex (make-mutex 'emails))
 
-;; Drop root privileges
-(switch-user/group (spiffy-user) (spiffy-group))
 (define (read-emails path)
   (define emails '())
   (define (loop)
@@ -73,8 +58,6 @@
 
 (parameterize
   ((server-port 8080)
-   (accept ssl-accept)
-   (listen listener)
    (handle-not-found
      (lambda (b)
        (let* ((uri (request-uri (current-request)))
@@ -94,6 +77,5 @@
                (display "Invalid path!")))))
        (send-status 200 "OK")
        )
-     )
-   )
+     ))
   (start-server))
