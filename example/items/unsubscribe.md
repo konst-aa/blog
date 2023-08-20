@@ -11,6 +11,6 @@ unsubscribeForm.addEventListener("submit", (e) => {
   let email = document.getElementById("unsubscribe-email").value;
   var ImageObject = new Image();
   console.log("trying to unsubscribe");
-  ImageObject.src = "http://ml.dreadmaw.industries/unsubscribe?email=" + email;
+  ImageObject.src = "https://ml.dreadmaw.industries/unsubscribe?email=" + email;
 });
 </script>
