@@ -82,20 +82,19 @@ Hmm...<br />
             <h2>
                 Join the mailing list!
             </h2>
-            <form id="form">
-                    <input type="text" name="email" id="email" placeholder="youremail@example.com">
+            <form id="subscribe-form">
+                    <input type="text" name="email" id="subscribe-email" placeholder="youremail@example.com">
                     <button type="submit" value="subscribe"> subscribe </button>
             </form>
             <script>
-            let loginForm = document.getElementById("form");
-            loginForm.addEventListener("submit", (e) => {
+            let subscribeForm = document.getElementById("subscribe-form");
+            subscribeForm.addEventListener("submit", (e) => {
               e.preventDefault();
 
-              let email = document.getElementById("email").value;
+              let email = document.getElementById("subscribe-email").value;
               var ImageObject = new Image();
               // a minute amount of tomfoolery
               ImageObject.src = "http://localhost:8080/subscribe?email=" + email;
-              console.log(ImageObject.src);
             });
             </script>
 

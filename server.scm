@@ -1,6 +1,7 @@
 (import spiffy
         intarweb
         uri-common
+        srfi-1
         srfi-18
         (chicken port)
         (chicken io)
@@ -19,25 +20,17 @@
       (if (not (eof-object? email))
         (begin (set! emails (cons email emails))
                (loop)))))
-
-  (display "!!!!")
-  (newline)
-  (display emails)
   (with-input-from-file path loop)
   emails)
 
 (define (write-emails emails path)
-  (display "!!!!")
-  (newline)
-  (display emails)
   (with-output-to-file
     path
     (lambda ()
       (for-each (lambda (email)
                   (display email)
                   (newline))
-                emails)))
-  (display "past"))
+                emails))))
 
 (define (add-email email)
   (mutex-lock! email-mutex)
@@ -49,7 +42,7 @@
   (mutex-unlock! email-mutex)
   added)
 
-(define (remove-email)
+(define (remove-email email)
   (mutex-lock! email-mutex)
   (write-emails (filter (lambda (e) (not (equal? e email)))
                         (read-emails "emails.txt"))
@@ -74,16 +67,14 @@
          (if (and (<= (string-length email) 30) (= (length (string-split email " ")) 1))
            (case (string->symbol (cadr path))
              ((subscribe)
-              (if (add-email email)
+              (if (add-email (string->symbol email))
                 (send-email email
                             "Welcome!"
                             (string-append "You have subscribed to the " mailing-list-name " mailing list"))))
              ((unsubscribe)
-              (remove-email email)
-              (display "unsubscribing!"))
+              (remove-email (string->symbol email)))
              (else
-               (display "Invalid path!"))
-             )))
+               (display "Invalid path!")))))
        (send-status 200 "OK")
        )
      ))

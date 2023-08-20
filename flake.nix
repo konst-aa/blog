@@ -22,6 +22,7 @@
           eggs.intarweb
           eggs.regex
           eggs.spiffy
+          eggs.srfi-1
           eggs.srfi-18
           eggs.srfi-19
           eggs.srfi-69
