@@ -1,12 +1,28 @@
 {
   "nodes": {
+    "konst-nixpkgs": {
+      "locked": {
+        "lastModified": 1692642311,
+        "narHash": "sha256-/CbAFChlFiDDnaU8AE8zTPQ652t/FT+uVw7JgXTXEwo=",
+        "owner": "konst-aa",
+        "repo": "nixpkgs",
+        "rev": "cb9cd3de77d777d7a0a147b997eb762232358fc4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "konst-aa",
+        "ref": "konst/pkg-ssl-proxy",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1680746236,
-        "narHash": "sha256-QjaHQU/tL1FRosos0MuuW9ijdVDshJ3NPy8y551sDYo=",
+        "lastModified": 1692642776,
+        "narHash": "sha256-laBzqBHG2/K40o668T0OU1lc1hP311kZXLIK8Sqvbjc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0e4477c9137032b7c195dbc280bed02b8e5ec54a",
+        "rev": "a856bc3839d4323d1b2f0c0e5899e6de076c7d43",
         "type": "github"
       },
       "original": {
@@ -17,6 +33,7 @@
     },
     "root": {
       "inputs": {
+        "konst-nixpkgs": "konst-nixpkgs",
         "nixpkgs": "nixpkgs"
       }
     }
