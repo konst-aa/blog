@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 SUBJECT="Subject: new blog post just dropped!\nContent-Type: text/html\n\n"
-UNSUBCRIBE="to unsubscribe, click this <a href=\"ka.dreadmaw.industries/unsubscribe.html\">link</a>"
+UNSUBCRIBE="to unsubscribe, click this <a href=\"ka.dreadmaw.industries/unsubscribe-page.html\">link</a>"
 CONTENT=$(cat -)
 ARR=("msmtp" "-a" "gmail")
 echo "sending emails..."
