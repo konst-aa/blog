@@ -64,7 +64,7 @@
               (path (uri-path uri))
               (query (uri-query uri))
               (email (alist-ref 'email query)))
-         (if (and (<= (string-length email) 30) (= (length (string-split email " ")) 1))
+         (if (and (<= (string-length email) 30) (= (length (string-split email " \"|&")) 1))
            (case (string->symbol (cadr path))
              ((subscribe)
               (if (add-email (string->symbol email))
