@@ -1,6 +1,6 @@
 ## Aw.
 <form id="unsubscribe-form">
-        <input type="text" name="email" id="unsubscribe-email" placeholder="youremail@example.com">
+        <input type="text" name="email" id="unsubscribe-email" placeholder="your-email@example.com">
         <button type="submit" value="unsubscribe" onclick="document.getElementById('unsubscribe-message').innerHTML = 'unsubscribed!'"> unsubscribe </button>
         <a id="unsubscribe-message"></a>
 </form>
