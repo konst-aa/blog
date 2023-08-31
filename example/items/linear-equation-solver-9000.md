@@ -87,4 +87,9 @@ Currently, you need a non-zero *x1* in the first row, then a non-zero *x2* in th
 
 (define solved (solve ex))
 (display solved)
-(newline)```
+(newline)
+```  
+
+### Extras
+Copilot thinks this is poetry :)  
+![a funny](media/lineq-gh-completion.png)
