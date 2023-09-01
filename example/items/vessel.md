@@ -1,10 +1,13 @@
 ## Vessel 
-### Original by Boris Ryzhy
-### Translated by Konstantin Astafurov
 
-Translated because of this awesome [song](https://youtu.be/HR5zpFs7YpY?si=bsGI2MTvJMGnhofU). Heads up: "vessel" is a mistranslation of what would translate to "bedpan". However, it's worth it for the rhymes, and it is a translation of the intentionally-used second meaning of the original word.
+Was inspired by this awesome [song](https://youtu.be/HR5zpFs7YpY?si=bsGI2MTvJMGnhofU).
+
+### Heads up: 
+"vessel" is a mistranslation of what would translate to "bedpan". However, it's worth it for the rhymes, and it is a translation of the intentionally-used second meaning of the original word.
 
 ### Vessel
+### Original by Boris Ryzhy
+### Translated by Konstantin Astafurov
 
 A white enamel-coated vessel  
 A window, drawer, and a bed.  
