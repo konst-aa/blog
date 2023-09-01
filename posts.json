@@ -35,5 +35,13 @@
         ],
         "date-published": "2023-08-31T00:33:24-0400",
         "relpath": "linear-equation-solver-9000.md"
+    },
+    "Vessel": {
+        "categories": [
+            "Poetry",
+            "Translations"
+        ],
+        "data-published": "2023-09-01T00:44:09-0400",
+        "relpath": "vessel.md"
     }
 }

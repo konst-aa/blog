@@ -30,7 +30,7 @@ course.</p>
 <h3 id="breakdown">Breakdown</h3>
 <p>The idea is to take the first row, use that to cancel all <em>x1</em>
 in the rows below, then the second row to cancel all <em>x2</em>, and so
-on. Then you do the same thing, but backwards: Use the last row to
+on. Then you do the same thing, but backwards: use the last row to
 cancel all <em>xn</em> in the rows above, then the second to last row to
 cancell all <em>xn-1</em>, and so on. Last of all, divide each row by
 its <em>xn</em> to set it to 1.</p>
@@ -41,12 +41,12 @@ detect series of equations with infinite/no solutions.</p>
 <h3 id="code">Code</h3>
 <pre class="racket"><code>#lang racket/main
 
-;;  Input
+;; Input
 (list (list 1 -2 1 0)
       (list 0 2 -8 8)
       (list -4 5 9 -9))
 
-;;  Output
+;; Output
 (list (list 1 0 0 29) 
       (list 0 1 0 16) 
       (list 0 0 1 3))

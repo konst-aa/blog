@@ -3,7 +3,7 @@
 The trees voice their indifference,  
 And the young green sun tints it with rose.  
 I tried injecting inference  
-The soil, refusing, flayed its nose.  
+The soil, refusing, clawed its nose.  
 
 With bloody nails, it ripped the blanket  
 Along with intention's every smear.  
