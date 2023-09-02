@@ -4,28 +4,28 @@
             "Poetry",
             "Translations"
         ],
-        "date-published": "2023-04-06T20:34:35-0400",
+        "date-published": "2023-04-06",
         "relpath": "take-that.md"
     },
     "Over There": {
         "categories": [
             "Poetry"
         ],
-        "date-published": "2023-04-07T20:58:24-0400",
+        "date-published": "2023-04-07",
         "relpath": "over-there.md"
     },
     "Crop Rotation": {
         "categories": [
             "Poetry"
         ],
-        "date-published": "2023-04-09T18:54:52-0400",
+        "date-published": "2023-04-09",
         "relpath": "crop-rotation.md"
     },
     "Haikus Written With Wyatt": {
         "categories": [
             "Poetry"
         ],
-        "date-published": "2023-05-14T18:43:19-0400",
+        "date-published": "2023-05-14",
         "relpath": "haikus-written-with-wyatt.md"
     },
     "Linear Equation Solver 9000": {
@@ -33,7 +33,7 @@
             "Programming",
             "Math"
         ],
-        "date-published": "2023-08-31T00:33:24-0400",
+        "date-published": "2023-08-31",
         "relpath": "linear-equation-solver-9000.md"
     },
     "Vessel": {
@@ -41,7 +41,7 @@
             "Poetry",
             "Translations"
         ],
-        "data-published": "2023-09-01T00:44:09-0400",
+        "date-published": "2023-09-01",
         "relpath": "vessel.md"
     }
 }

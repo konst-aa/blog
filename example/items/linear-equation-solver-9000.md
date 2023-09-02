@@ -1,3 +1,7 @@
+# SPOILER
+A short program to solve linear equations using gaussian elimination, along with a breakdown of how it works.  
+# ENDSPOILER
+
 ## Linear Equation Solver 9000
 
 ### Flexing

@@ -1,3 +1,10 @@
+# SPOILER
+An hour from now, this pristine alley,  
+Will flood with your fat's sickening freight.  
+But for you, I have opened poetry's valley.  
+With priceless words, I flow, and create.  
+# ENDSPOILER
+
 ## Take that!
 ### Original by Vladimir Mayakovsky
 ### Translated by Konstantin Astafurov

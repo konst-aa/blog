@@ -1,9 +1,16 @@
+# SPOILER
+A white enamel-coated vessel  
+A window, drawer, and a bed.  
+It's hard to live and hard to nestle.  
+It comforts best the almost-dead.  
+# ENDSPOILER
+
 ## Vessel 
 
 Was inspired by this awesome [song](https://youtu.be/HR5zpFs7YpY?si=bsGI2MTvJMGnhofU).
 
 ### Heads up: 
-"vessel" is a mistranslation of what would translate to "bedpan". However, it's worth it for the rhymes, and it is a translation of the intentionally-used second meaning of the original word.
+"Vessel" is a mistranslation of what would translate to "bedpan". However, it's worth it for the rhymes, and it is a translation of the intentionally-used second meaning of the original word.
 
 ### Vessel
 ### Original by Boris Ryzhy

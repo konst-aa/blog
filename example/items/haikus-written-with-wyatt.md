@@ -1,3 +1,13 @@
+# SPOILER
+Pink delicate blossoms,  
+Stone walls one with creeping vines  
+Inconsistent tiling.  
+
+The pale sky repairs  
+Punch cards lofted by the wind:  
+Tissue-paper leaves  
+# ENDSPOILER
+
 ## Haikus written with Wyatt
 [Wyatt's blog](https://ideascentral.substack.com/)  
 

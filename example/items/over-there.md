@@ -1,3 +1,10 @@
+# SPOILER
+My glass-eyed gaze is still and blissful.  
+There's no one here nor over there.  
+"It's warm" I think. The kettle whistles.  
+My palms touch strands of golden hair.  
+# ENDSPOILER
+
 ### Over there
 
 My glass-eyed gaze is still and blissful.  
