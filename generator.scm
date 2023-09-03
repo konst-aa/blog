@@ -117,7 +117,7 @@
          (post-path (string-append markdown-folder relpath))
          (date-sentence (date-sentence-from-date (alist-refp "date-published" info)))
          (spoiler (car (post-and-spoiler post-path))))
-    (sprintf "**[~A](~A)**  \n~A  \n~A  \n" name link date-sentence spoiler)))
+    (sprintf "**[~A](~A)**  \n~A  \n~A...  \n\n" name link date-sentence spoiler)))
 
 (define (generate-category group port)
   (let* ((joined (apply string-append (map link-post (cdr group))))
