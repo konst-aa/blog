@@ -9,7 +9,7 @@ Written during MATH16000 (linear algebra) using termux and vim, of course.
 
 
 ### Breakdown
-The idea is to take the first row, use that to cancel all *x1* in the rows below, then the second row to cancel all *x2*, and so on. Then you do the same thing, but backwards: use the last row to cancel all *xn* in the rows above, then the second to last row to cancell all *xn-1*, and so on. Last of all, divide each row by its *xn* to set it to 1.  
+The idea is to take the first row, use that to cancel all *x1* in the rows below, then the second row to cancel all *x2*, and so on. Afterwards, we do the same thing, but backwards: use the last row to cancel all *xn* in the rows above, then the second to last row to cancel all *xn-1*, and so on. Last of all, divide each row by its *xn* to set it to 1.  
 
 ### Limitations
 Currently, you need a non-zero *x1* in the first row, then a non-zero *x2* in the second row, and so on. Also this thing can't detect series of equations with infinite/no solutions.
