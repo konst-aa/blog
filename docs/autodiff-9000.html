@@ -34,11 +34,11 @@ all the work for taking in user input.</p>
 <h2 id="example">Example</h2>
 <h3 id="differentiates-f-x-y-with-respect-to-x">differentiates (f x y)
 with respect to x</h3>
-<p><code>:f (f x y) = (* x y)</code><br />
-<code>:d f x</code><br />
-returns: <code>(df/dx x y) = (+ (* 1 y) (* x 0))</code><br />
-<code>:e (df/dx 5 10)</code><br />
-returns: <code>10</code></p>
+<pre><code>&gt;&gt; :f (f x y) = (* x y)
+&gt;&gt; :d f x
+(df/dx x y) = (+ (* 1 y) (* x 0))
+&gt;&gt; :e (df/dx 5 10)
+10</code></pre>
 <h2 id="math">Math</h2>
 <p>The actual math part is recursively applying the following rules:</p>
 <ul>
@@ -65,58 +65,69 @@ Little Learner</a>; I own a copy but have yet to read it...</p>
 <h2 id="code-snippet">Code snippet</h2>
 <p>The whole file can be found here: <a
 href="https://github.com/konst-aa/fun/blob/main/autodiff.scm">good
-times</a></p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode scm"><code class="sourceCode scheme"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">;; Accessors</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>(<span class="ex">define</span><span class="fu"> </span>(x1 f)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">cadr</span> f))</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>(<span class="ex">define</span><span class="fu"> </span>(x2 f)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">caddr</span> f))</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>(<span class="ex">define</span><span class="fu"> </span>(rest f)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">cddr</span> f))</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>(<span class="ex">define</span><span class="fu"> </span>(deriv f)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">;; treat (x1 f) as x</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">case</span> (<span class="kw">car</span> f)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">expt</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>     `(<span class="op">*</span> ,(x2 f) (<span class="kw">expt</span> ,(x1 f) ,(<span class="op">-</span> (x2 f) <span class="dv">1</span>))))</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">exp</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>     `(<span class="kw">exp</span> ,(x1 f)))</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">sqrt</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>     (deriv `(<span class="kw">expt</span> ,(x1 f) <span class="fl">0.5</span>)))</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">sin</span>)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>     `(<span class="kw">cos</span> ,(x1 f)))</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">cos</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>     `(<span class="op">-</span> (<span class="kw">sin</span> ,(x1 f))))))</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>(<span class="ex">define</span><span class="fu"> </span>(diff f wrt)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  (<span class="ex">define</span><span class="fu"> </span>(chain f g)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    `(<span class="op">*</span> ,(deriv f)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      ,(diff g wrt)))</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">cond</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">eq?</span> wrt f) <span class="dv">1</span>)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">and</span> (<span class="kw">pair?</span> f)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>          (<span class="kw">null?</span> (<span class="kw">cddr</span> f))</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>          (<span class="kw">member</span> (<span class="kw">car</span> f) &#39;(<span class="op">*</span> <span class="op">+</span> <span class="op">/</span>)))</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>     (<span class="kw">case</span> (<span class="kw">car</span> f)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>       ((<span class="op">+</span> <span class="op">*</span>)  <span class="co">; identity ops: (* x), (+ x), etc.</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        (diff (x1 f) wrt))</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>       ((<span class="op">/</span>)</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        (diff `(<span class="op">/</span> <span class="dv">1</span> ,(x1 f)) wrt))))</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">pair?</span> f)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>     (<span class="kw">case</span> (<span class="kw">car</span> f)</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>       ((<span class="op">+</span>) `(<span class="op">+</span> ,@(map (<span class="kw">lambda</span> (f) (diff f wrt)) (<span class="kw">cdr</span> f))))</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>       ((<span class="op">-</span>) `(<span class="op">-</span> ,(diff `(<span class="op">+</span> ,@(<span class="kw">cdr</span> f)) wrt)))</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>       ((<span class="op">*</span>) `(<span class="op">+</span> (<span class="op">*</span> ,(diff (x1 f) wrt) ,@(rest f))</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>              (<span class="op">*</span> ,(x1 f) ,(diff `(<span class="op">*</span> ,@(rest f)) wrt))))</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>       ((<span class="op">/</span>) `(<span class="op">/</span> (<span class="op">-</span> (<span class="op">*</span> ,(diff (x1 f) wrt) ,(x2 f))</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>                   (<span class="op">*</span> ,(x1 f) ,(diff (x2 f) wrt)))</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>              (<span class="kw">expt</span> ,(x2 f) <span class="dv">2</span>)))</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>       (<span class="kw">else</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>         <span class="co">;; does the heavy lifting</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>         (chain f (x1 f)))</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>       ))</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">else</span> <span class="dv">0</span>)))</span></code></pre></div>
+times</a>. I made a [replit for it](Blog post: <a
+href="https://ka.dreadmaw.industries/autodiff-9000.html">https://ka.dreadmaw.industries/autodiff-9000.html</a>),
+or you can run it in <a href="https://try.gambitscheme.org/">the Gambit
+Scheme Repl</a>, but you'll need the following patch:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode scheme"><code class="sourceCode scheme"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">;; Patch for running on try.gambitscheme.org</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">;; Replace the readrepl function with this one.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>(<span class="ex">define</span><span class="fu"> </span>(readrepl)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">display</span> <span class="st">&quot;&gt;&gt; &quot;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">flush-output-port</span>) <span class="co">; flush port to make sure the prompt is displayed</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">read</span>))</span></code></pre></div>
+<p><strong>Actual snippet:</strong></p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode scheme"><code class="sourceCode scheme"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">;; Accessors</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(<span class="ex">define</span><span class="fu"> </span>(x1 f)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">cadr</span> f))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>(<span class="ex">define</span><span class="fu"> </span>(x2 f)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">caddr</span> f))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>(<span class="ex">define</span><span class="fu"> </span>(rest f)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">cddr</span> f))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>(<span class="ex">define</span><span class="fu"> </span>(deriv f)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">;; treat (x1 f) as x</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">case</span> (<span class="kw">car</span> f)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">expt</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>     `(<span class="op">*</span> ,(x2 f) (<span class="kw">expt</span> ,(x1 f) ,(<span class="op">-</span> (x2 f) <span class="dv">1</span>))))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">exp</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>     `(<span class="kw">exp</span> ,(x1 f)))</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">sqrt</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>     (deriv `(<span class="kw">expt</span> ,(x1 f) <span class="fl">0.5</span>)))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">sin</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>     `(<span class="kw">cos</span> ,(x1 f)))</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">cos</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>     `(<span class="op">-</span> (<span class="kw">sin</span> ,(x1 f))))))</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>(<span class="ex">define</span><span class="fu"> </span>(diff f wrt)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  (<span class="ex">define</span><span class="fu"> </span>(chain f g)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    `(<span class="op">*</span> ,(deriv f)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      ,(diff g wrt)))</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">cond</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">eq?</span> wrt f) <span class="dv">1</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">and</span> (<span class="kw">pair?</span> f)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>          (<span class="kw">null?</span> (<span class="kw">cddr</span> f))</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>          (<span class="kw">member</span> (<span class="kw">car</span> f) &#39;(<span class="op">*</span> <span class="op">+</span> <span class="op">/</span>)))</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>     (<span class="kw">case</span> (<span class="kw">car</span> f)</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>       ((<span class="op">+</span> <span class="op">*</span>)  <span class="co">; identity ops: (* x), (+ x), etc.</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>        (diff (x1 f) wrt))</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>       ((<span class="op">/</span>)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>        (diff `(<span class="op">/</span> <span class="dv">1</span> ,(x1 f)) wrt))))</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">pair?</span> f)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>     (<span class="kw">case</span> (<span class="kw">car</span> f)</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>       ((<span class="op">+</span>) `(<span class="op">+</span> ,@(map (<span class="kw">lambda</span> (f) (diff f wrt)) (<span class="kw">cdr</span> f))))</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>       ((<span class="op">-</span>) `(<span class="op">-</span> ,(diff `(<span class="op">+</span> ,@(<span class="kw">cdr</span> f)) wrt)))</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>       ((<span class="op">*</span>) `(<span class="op">+</span> (<span class="op">*</span> ,(diff (x1 f) wrt) ,@(rest f))</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>              (<span class="op">*</span> ,(x1 f) ,(diff `(<span class="op">*</span> ,@(rest f)) wrt))))</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>       ((<span class="op">/</span>) `(<span class="op">/</span> (<span class="op">-</span> (<span class="op">*</span> ,(diff (x1 f) wrt) ,(x2 f))</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>                   (<span class="op">*</span> ,(x1 f) ,(diff (x2 f) wrt)))</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>              (<span class="kw">expt</span> ,(x2 f) <span class="dv">2</span>)))</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>       (<span class="kw">else</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>         <span class="co">;; does the heavy lifting</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>         (chain f (x1 f)))</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>       ))</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">else</span> <span class="dv">0</span>)))</span></code></pre></div>
 <p><em>Posted on 03/29/2024</em></p>
 <h2 id="more-from-programming">More from Programming:</h2>
 <p><strong><a href="autodiff-9000.html">Automatic Differentiator

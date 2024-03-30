@@ -10,11 +10,13 @@ Scheme's `read` procedure (which is a super buffed version of your average `inpu
 
 ## Example
 ### differentiates (f x y) with respect to x
-`:f (f x y) = (* x y)`  
-`:d f x`  
-returns: `(df/dx x y) = (+ (* 1 y) (* x 0))`  
-`:e (df/dx 5 10)`  
-returns: `10`
+```
+>> :f (f x y) = (* x y)
+>> :d f x
+(df/dx x y) = (+ (* 1 y) (* x 0))
+>> :e (df/dx 5 10)
+10
+```
 
 ## Math
 The actual math part is recursively applying the following rules:
@@ -28,9 +30,19 @@ Afterward, the evaluation command uses Scheme's `eval` function to evaluate the 
 With these abstractions in place, calculating Hessian matrices, discriminants, gradients, and company shouldn't be too difficult. I believe all of this is also discussed in [The Little Learner](https://mitpress.mit.edu/9780262546379/the-little-learner/); I own a copy but have yet to read it...
 
 ## Code snippet
-The whole file can be found here: [good times](https://github.com/konst-aa/fun/blob/main/autodiff.scm)
+The whole file can be found here: [good times](https://github.com/konst-aa/fun/blob/main/autodiff.scm). I made a [replit for it](Blog post: https://ka.dreadmaw.industries/autodiff-9000.html), or you can run it in [the Gambit Scheme Repl](https://try.gambitscheme.org/), but you'll need the following patch:  
 
-```scm
+```scheme
+;; Patch for running on try.gambitscheme.org
+;; Replace the readrepl function with this one.
+(define (readrepl)
+  (display ">> ")
+  (flush-output-port) ; flush port to make sure the prompt is displayed
+  (read))
+```
+**Actual snippet:**  
+
+```scheme
 ;; Accessors
 (define (x1 f)
   (cadr f))
