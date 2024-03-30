@@ -30,7 +30,7 @@ Afterward, the evaluation command uses Scheme's `eval` function to evaluate the 
 With these abstractions in place, calculating Hessian matrices, discriminants, gradients, and company shouldn't be too difficult. I believe all of this is also discussed in [The Little Learner](https://mitpress.mit.edu/9780262546379/the-little-learner/); I own a copy but have yet to read it...
 
 ## Code snippet
-The whole file can be found here: [good times](https://github.com/konst-aa/fun/blob/main/autodiff.scm). I made a [replit for it](Blog post: https://ka.dreadmaw.industries/autodiff-9000.html), or you can run it in [the Gambit Scheme Repl](https://try.gambitscheme.org/), but you'll need the following patch:  
+The whole file can be found here: [good times](https://github.com/konst-aa/fun/blob/main/autodiff.scm). I made a [replit for it](https://replit.com/@konstantin_aa/autodiff), or you can run it in [the Gambit Scheme Repl](https://try.gambitscheme.org/), but you'll need the following patch:  
 
 ```scheme
 ;; Patch for running on try.gambitscheme.org
