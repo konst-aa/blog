@@ -36,5 +36,13 @@
         ],
         "date-published": "2023-09-01",
         "relpath": "vessel.md"
+    },
+    "Automatic Differentiator 9000": {
+        "categories": [
+            "Programming",
+            "Math"
+        ],
+        "date-published": "2024-03-29",
+        "relpath": "autodiff-9000.md"
     }
 }

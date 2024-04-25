@@ -70,7 +70,10 @@ a:hover {
   margin: 0 auto;
 }
 .post {
-  width: 71%;
+  text-align: justify;
+  display: inline-block;
+  width: 68%;
+  margin-right: 3%;
   float: left;
 }
 .sidebar {

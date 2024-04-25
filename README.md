@@ -1,7 +1,8 @@
 # pal-blog-generator
 
-Generates static html with templates.
+Reinventing the wheel (poorly) to generate static html with templates. This repo is also the home of my [Awesome Blog](https://ka.dreadmaw.industries/)
 
-`make blog`  
-~Lowdown & Comparse are part of this project as I needed to remove their dependency requirements which prevented them from being built by nix.~  
+NOTE: [i didnt know that hyde existed, I might use it, but it wasn't invented here](http://wiki.call-cc.org/eggref/5/hyde)
+
+`make blog`
 Pandoc is awesome baybee!
