@@ -3,16 +3,18 @@
 rm -r docs
 mkdir docs
 
-cp posts.scm docs
 cp robots.txt docs
 cp CNAME docs
+cp -r example/media docs
+
+cp posts.scm docs
 cp example/h.html docs
 cp example/stylesheet.css docs
 cp example/items/*.md docs
-
 cp blog-gen docs
 
 cd docs
+
 for post in *.md; do
     echo "Spoiling $post"
     ./blog-gen spoiler posts.scm $post > t.md

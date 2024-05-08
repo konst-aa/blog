@@ -1,4 +1,4 @@
-A somewhat short program (~150 loc) to automatically differentiate s-exprs, along with a breakdown of how it works. It also comes with a REPL
+A Scheme script (~150 loc) to automatically differentiate s-exprs, along with a breakdown of how it works. It also comes with a REPL
 # ENDSPOILER
 
 ## Automatic Differentiator 9000
