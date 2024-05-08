@@ -21,17 +21,21 @@ for post in *.md; do
     mv t.md $post
 done
 for post in *.md; do
-    echo "Generating posts related to $post"
+    echo "Appending posts related to $post"
     ./blog-gen related posts.scm $post >> $post
 done
 
 echo "Generating index"
 ./blog-gen index posts.scm
+
 for page in *.md; do
+    output="$(basename $page .md).html"
+    echo "Generating $output"
     cat $page | pandoc -f gfm -t html > t.html
+    # https://stackoverflow.com/q/6790631
     cat h.html | sed '/<!-- MARKDOWN-GOES-HERE -->/{
         r t.html
-    }' > "$(basename $page .md).html"
+    }' > $output
 done
 
 rm t.html
