@@ -1,4 +1,3 @@
-# SPOILER
 Pink delicate blossoms,  
 Stone walls one with creeping vines  
 Inconsistent tiling.  

@@ -1,4 +1,3 @@
-# SPOILER
 A white enamel-coated vessel  
 A window, drawer, and a bed.  
 It's hard to live and hard to nestle.  

@@ -1,4 +1,3 @@
-# SPOILER
 An hour from now, this pristine alley,  
 Will flood with your fat's sickening freight.  
 But for you, I have opened poetry's valley.  

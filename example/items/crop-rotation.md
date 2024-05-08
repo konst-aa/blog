@@ -1,4 +1,3 @@
-# SPOILER
 The trees voice their indifference,  
 And the young green sun tints it with rose.  
 I tried injecting inference  
