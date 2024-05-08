@@ -2,10 +2,6 @@
   ((categories . ("Poetry" "Translations"))
    (date-published . "2023-04-06")
    (title . "Take That!")))
- ("over-there.md" .
-  ((categories . ("Poetry"))
-   (date-published . "2023-04-07")
-   (title . "Over There")))
  ("crop-rotation.md" .
   ((categories . ("Poetry"))
    (date-published . "2023-04-09")
