@@ -24,13 +24,13 @@
  ;;; Do so at your own risk, there's a reason these
  ;;; aren't on the site anymore
 
- ("over-there.md" .
-  ((categories . ("Poetry"))
-   (date-published . "2023-04-07")
-   (title . "Over There")))
- ("linear-equation-solver-9000.md" .
-  ((categories . ("Programming" "Math"))
-   (date-published . "2023-08-31")
-   (title . "Linear Equation Solver 9000")))
+ ;;; ("over-there.md" .
+ ;;;  ((categories . ("Poetry"))
+ ;;;   (date-published . "2023-04-07")
+ ;;;   (title . "Over There")))
+ ;;; ("linear-equation-solver-9000.md" .
+ ;;;  ((categories . ("Programming" "Math"))
+ ;;;   (date-published . "2023-08-31")
+ ;;;   (title . "Linear Equation Solver 9000")))
  )
 
