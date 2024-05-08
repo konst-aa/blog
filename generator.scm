@@ -8,7 +8,7 @@
 
 (if (< (length args) 2)
   (begin
-    (display "Usage: blog-gen [mode] posts.scm [post.md]\n")
+    (display "Usage: blog-gen <mode> <posts.scm> [post.md]\n")
     (exit 1)))
 
 (define mode (first args))
@@ -41,7 +41,7 @@
          (year (car date))
          (month (cadr date))
          (day (caddr date)))
-    (string-append "*Posted on " month "/" day "/" year "*")))
+    (sprintf "*Posted on ~A/~A/~A*" month day year)))
 
 (define (link-post post-entry)
   (let* ((relpath (car post-entry))
@@ -67,10 +67,9 @@
    (call-with-output-file
      "index.md"
      (lambda (port)
-       (let* ((link-category 
-               (lambda (c) (sprintf "[~A](~A)  \n" c (string-append c ".html"))))
+       (let* ((link-category (lambda (c) (sprintf "[~A](~A.html)  \n" c c)))
               (category-links (map link-category (map car by-category)))
-              (md (sprintf "## Categories:  \n~A  \n ## All Posts:  \n~A \n"
+              (md (sprintf "## Categories:  \n~A  \n ## All Posts:  \n~A"
                            (apply string-append category-links)
                            (apply string-append (map link-post (reverse posts))))))
          (display md port))))
@@ -79,6 +78,7 @@
           (call-with-output-file
             (string-append (car category-pair) ".md")
             (lambda (port)
+              (display (sprintf "# ~A  \n" (car category-pair)) port)
               (print-category (cdr category-pair) port))))
         by-category))
 
@@ -88,6 +88,7 @@
           (not-self (lambda (p) (not (equal? (car p) post-markdown-file)))))
      (map-in-order
        (lambda (c)
+         (display c (current-error-port))
          (printf "## More from ~A  \n" c)
          (print-category (safe-take (filter not-self (alist-refp c by-category)) 3)
                          (current-output-port)))
