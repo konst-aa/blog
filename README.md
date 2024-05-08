@@ -3,7 +3,8 @@
 Reinventing the wheel (poorly) to generate static html with templates. This repo is also the home of my [Awesome Blog](https://ka.dreadmaw.industries/).  
 
 My scheme script can:
-* generate spoilers `./blog-gen spoiler posts.scm post.md`
+* generate spoilers `./blog-gen spoiler posts.scm post.md`,
+prints the despoilered post to stdout, and adds the spoiler to posts.scm
 * generate an index of blog posts in markdown, (grouped by category as well)
 `./blog-gen index posts.scm` 
 (requires spoilers!)

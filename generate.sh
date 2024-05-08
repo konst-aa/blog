@@ -15,7 +15,8 @@ cp blog-gen docs
 cd docs
 for post in *.md; do
     echo "Spoiling $post"
-    ./blog-gen spoiler posts.scm $post
+    ./blog-gen spoiler posts.scm $post > t.md
+    mv t.md $post
 done
 for post in *.md; do
     echo "Generating posts related to $post"

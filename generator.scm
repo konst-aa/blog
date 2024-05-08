@@ -67,10 +67,9 @@
    (call-with-output-file
      "index.md"
      (lambda (port)
-       (let* ((category-links
-                (map (lambda (c)
-                       (sprintf "[~A](~A)  \n" c (string-append c ".html")))
-                     (map car by-category)))
+       (let* ((link-category 
+               (lambda (c) (sprintf "[~A](~A)  \n" c (string-append c ".html"))))
+              (category-links (map link-category (map car by-category)))
               (md (sprintf "## Categories:  \n~A  \n ## All Posts:  \n~A \n"
                            (apply string-append category-links)
                            (apply string-append (map link-post (reverse posts))))))
@@ -85,11 +84,12 @@
 
   ((related)
    (let* ((post (alist-refp post-markdown-file posts))
-          (categories (alist-refp 'categories post)))
+          (categories (alist-refp 'categories post))
+          (not-self (lambda (p) (not (equal? (car p) post-markdown-file)))))
      (map-in-order
        (lambda (c)
          (printf "## More from ~A  \n" c)
-         (print-category (safe-take (alist-refp c by-category) 3)
+         (print-category (safe-take (filter not-self (alist-refp c by-category)) 3)
                          (current-output-port)))
        categories)))
 
@@ -111,8 +111,7 @@
                (list (cons 'spoiler spoiler)))
      (call-with-output-file posts-file
                             (lambda (port) (write posts port)))
-     (call-with-output-file post-markdown-file
-                            (lambda (port) (display post-text port)))))
+     (display post-text)))
   (else
     (display "Unknown mode. Available: indexes, related, spoiler")))
 
