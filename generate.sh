@@ -25,7 +25,7 @@ for post in *.md; do
     ./blog-gen related posts.scm $post >> $post
 done
 
-echo "Generating index"
+echo "Creating index and category pages"
 ./blog-gen index posts.scm
 
 for page in *.md; do
